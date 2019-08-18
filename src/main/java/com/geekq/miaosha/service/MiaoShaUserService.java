@@ -97,7 +97,7 @@ public class MiaoShaUserService {
         miaoShaUser.setPassword(DBPassWord);
         miaoShaUser.setRegisterDate(new Date());
         miaoShaUser.setSalt(salt);
-        miaoShaUser.setNickname(userName);
+   //   miaoShaUser.setNickname(userName);
         try {
             miaoShaUserDao.insertMiaoShaUser(miaoShaUser);
             MiaoshaUser user = miaoShaUserDao.getByNickname(miaoShaUser.getNickname());

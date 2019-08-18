@@ -7,6 +7,7 @@ import com.geekq.miaosha.controller.LoginController;
 import com.geekq.miaosha.domain.MiaoshaUser;
 import com.geekq.miaosha.redis.RedisService;
 import com.geekq.miaosha.service.MiaoShaUserService;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +48,9 @@ public class AccessInterceptor  extends HandlerInterceptorAdapter{
 //			if(hm.getMethod().getName().startsWith("test")){
 //				return true;
 //			}
+			//从request中获取parameter或cookie中的token获取user
 			MiaoshaUser user = getUser(request, response);
+			//放入userContext的ThreadLocal
 			UserContext.setUser(user);
 			AccessLimit accessLimit = hm.getMethodAnnotation(AccessLimit.class);
 			if(accessLimit == null) {

@@ -36,7 +36,7 @@ public class RedisLua {
         List<String> argves = new ArrayList<String>();
         argves.add("6000");
         argves.add("5");
-        jedis.auth("xxxx");
+//        jedis.auth("xxxx");
 //        Object evalSha = jedis.evalsha(lua);
         String luaScript = jedis.scriptLoad(lua);
         System.out.println(luaScript);
@@ -45,7 +45,7 @@ public class RedisLua {
     }
 
     /**
-     * 统计访问次数
+     * 统计访问次数：get KEYS[1]
      */
     public static Object getVistorCount(String key) {
 
@@ -59,7 +59,7 @@ public class RedisLua {
         List<String> keys = new ArrayList<String>();
         keys.add(key);
         List<String> argves = new ArrayList<String>();
-        jedis.auth("youxin11");
+//        jedis.auth("youxin11");
         String luaScript = jedis.scriptLoad(count);
         System.out.println(luaScript);
         object = jedis.evalsha(luaScript, keys, argves);
@@ -71,7 +71,7 @@ public class RedisLua {
     }
 
     /**
-     * 统计访问次数
+     * 把KEYS[1]加一
      */
     public static void vistorCount(String key) {
 
@@ -84,7 +84,7 @@ public class RedisLua {
             List<String> keys = new ArrayList<String>();
             keys.add(key);
             List<String> argves = new ArrayList<String>();
-            jedis.auth("youxin11");
+ //           jedis.auth("youxin11");
             String luaScript = jedis.scriptLoad(count);
             System.out.println(luaScript);
             jedis.evalsha(luaScript, keys, argves);
